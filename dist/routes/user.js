@@ -76,7 +76,11 @@ router.get('/allUsers', function (req, res) { return __awaiter(void 0, void 0, v
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, prisma.user.findMany()];
+                return [4 /*yield*/, prisma.user.findMany({
+                        include: {
+                            photos: true
+                        }
+                    })];
             case 1:
                 users = _a.sent();
                 res.json(users).status(200);
@@ -101,6 +105,9 @@ router.get('/userByID/:id', function (req, res) { return __awaiter(void 0, void 
                 return [4 /*yield*/, prisma.user.findFirst({
                         where: {
                             id: id
+                        },
+                        include: {
+                            photos: true
                         }
                     })];
             case 2:
@@ -115,24 +122,36 @@ router.get('/userByID/:id', function (req, res) { return __awaiter(void 0, void 
         }
     });
 }); });
-router.post("/upload", upload.single("image"), function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var path, result, err_1;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
+router.post("/upload/:id", upload.single("image"), function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var _a, path, filename, create, result, err_1;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
             case 0:
-                _a.trys.push([0, 2, , 3]);
-                path = req.file.path;
-                console.log(path);
-                return [4 /*yield*/, cloudinary_1["default"].uploader.upload(path)];
+                _b.trys.push([0, 3, , 4]);
+                _a = req.file, path = _a.path, filename = _a.filename;
+                return [4 /*yield*/, prisma.photo.create({
+                        data: {
+                            url: filename,
+                            User: {
+                                connect: {
+                                    id: req.params.id
+                                }
+                            }
+                        }
+                    })];
             case 1:
-                result = _a.sent();
-                res.json(result).status(200);
-                return [3 /*break*/, 3];
+                create = _b.sent();
+                console.log(create);
+                return [4 /*yield*/, cloudinary_1["default"].uploader.upload(path)];
             case 2:
-                err_1 = _a.sent();
+                result = _b.sent();
+                res.json(result).status(200);
+                return [3 /*break*/, 4];
+            case 3:
+                err_1 = _b.sent();
                 console.log(err_1);
-                return [3 /*break*/, 3];
-            case 3: return [2 /*return*/];
+                return [3 /*break*/, 4];
+            case 4: return [2 /*return*/];
         }
     });
 }); });
