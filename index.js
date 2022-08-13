@@ -1,9 +1,9 @@
+const dotenv = require("dotenv");
+dotenv.config();
 const express = require("express");
 const app = express();
-const dotenv = require("dotenv");
 const cors = require("cors");
 const PORT = process.env.PORT || 3333;
-dotenv.config();
 
 // Middleware
 app.use(express.json());
