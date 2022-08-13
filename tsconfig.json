@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "outDir": "dist",
+    "strict": true,
+    "lib": ["esnext"],
+    "esModuleInterop": true,
+    "module": "Commonjs",
+    "moduleResolution": "node"
+  },
+  "ts-node": {
+    "esm": true
+  },
+  "exclude": ["node_modules"]
+}

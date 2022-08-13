@@ -8,7 +8,7 @@ datasource db {
   shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
-model Client {
+model User {
   id       String  @id @default(uuid())
   username String
   photos   Photo[]
@@ -20,7 +20,7 @@ model Photo {
   id       String  @id @default(uuid())
   name     String?
   url      String
-  Client   Client? @relation(fields: [clientId], references: [id])
+  User     User?   @relation(fields: [clientId], references: [id])
   clientId String?
 
   @@map("photos")
