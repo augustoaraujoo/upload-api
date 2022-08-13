@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
 const cors = require("cors");
-
+const PORT = process.env.PORT || 3333;
 dotenv.config();
 
 // Middleware
@@ -12,4 +12,4 @@ app.use(cors());
 // Route
 app.use("/user", require("./routes/user"));
 
-app.listen(3333, () => console.log("Server is running"));
+app.listen(PORT, () => console.log("Server is running"));
