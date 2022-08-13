@@ -6,6 +6,9 @@ import path from "path";
 // Multer config
 module.exports = multer({
   storage: multer.diskStorage({
+    destination(req: Request, file: Express.Multer.File, cb: (error: Error | null, filename: string) => void) {
+      cb(null, 'uploads');
+    },
     // função que ira criar uma hash antes do nome do arquivo
     // para evitar que 2 arquivos tenham o mesmo nome
     // filename

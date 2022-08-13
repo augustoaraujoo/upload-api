@@ -14,6 +14,7 @@ app.use(express.json());
 app.use(cors());
 
 // Route
+app.use('/files', express.static(__dirname + '/uploads'));
 app.use("/user", router);
 
 app.listen(PORT, () => console.log("Server is running"));
