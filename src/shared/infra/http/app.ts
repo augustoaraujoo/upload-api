@@ -14,6 +14,9 @@ app.use(cors());
 // Route
 app.use('/files', express.static(__dirname + '/uploads'));
 app.use(routes);
+app.get('/', (req: Request, res: Response) => {
+    res.send('Hello World');
+})
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     if (err instanceof Error) {
         return res.status(400).json({
