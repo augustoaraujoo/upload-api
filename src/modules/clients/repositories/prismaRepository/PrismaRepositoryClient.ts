@@ -5,14 +5,24 @@ import { ICreatePhotoC } from '../../dtos/ICreatePhotoC';
 import v2 from '../../../../../utils/cloudinary';
 
 export class PrismaRepositoryClient implements IClientRepository {
+    async findAllClients(): Promise<any> {
+        const clients = await prismaDBClient.user.findMany();
+        return clients;
+    }
     async findClientById(id: string): Promise<any> {
         const findClient = await prismaDBClient.user.findMany({
             where: {
                 id: {
                     equals: id,
-                    mode: 'insensitive'
-                }
+                    mode: 'insensitive',
+                },
+            },
+            select: {
+                id: true,
+                username: true,
+                photos: true
             }
+
         })
         return findClient;
     }

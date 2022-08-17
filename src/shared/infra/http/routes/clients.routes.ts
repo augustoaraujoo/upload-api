@@ -6,6 +6,9 @@ const clientsRoutes = Router();
 
 const createClientController = new CreateClientController();
 const findClientByIDController = new FindClientByIDController();
+const findAllClientsController = new FindClientByIDController();
+
 clientsRoutes.post('/create', createClientController.handle);
 clientsRoutes.get('/find/:id', findClientByIDController.handle);
-export default clientsRoutes ;
+clientsRoutes.get('/all', findAllClientsController.handle);
+export default clientsRoutes;

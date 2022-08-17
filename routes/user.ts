@@ -16,21 +16,5 @@ router.get('/allUsers', async (req: Request, res: Response) => {
     console.log(error);
   }
 })
-router.get('/userByID/:id', async (req: Request, res: Response) => {
-  const { id } = req.params;
-  try {
-    const user = await prisma.user.findFirst({
-      where: {
-        id
-      },
-      include: {
-        photos: true
-      }
-    })
-    res.json(user).status(200);
-  } catch (error) {
-    console.log(error);
-  }
-})
 
 export default router;

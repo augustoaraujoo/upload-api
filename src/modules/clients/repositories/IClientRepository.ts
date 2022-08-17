@@ -6,4 +6,5 @@ export interface IClientRepository {
     findClient({ username }: IClientDTO): Promise<any>;
     createPhoto({ id, path }: ICreatePhotoC): Promise<any>;
     findClientById(id: string): Promise<any>;
+    findAllClients(): Promise<any>;
 }
