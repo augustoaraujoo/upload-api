@@ -1,5 +1,5 @@
 import { Response, Request } from 'express';
-import { uploadFileClientUseCase } from '.';
+import { uploadFileClientUseCase } from './index';
 interface File {
     path: string
     filename?: string
