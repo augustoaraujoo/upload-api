@@ -8,7 +8,7 @@
   "main": "index.ts",
   "scripts": {
     "start": "node dist/src/shared/infra/http/index.js",
-    "dev": "ts-node-dev src/shared/infra/http/index.ts",
+    "dev": "ts-node-dev --files src/shared/infra/http/index.ts",
     "build": "tsc "
   },
   "keywords": [],

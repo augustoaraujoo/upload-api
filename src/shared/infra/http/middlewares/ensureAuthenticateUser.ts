@@ -15,8 +15,9 @@ export async function ensureAuthenticatedUser(req: Request, res: Response, next:
     try {
         const { sub } = verify(token, `${process.env.JWT_KEY_USER}`) as IPayload
 
-        req.id_user = sub
 
+        req.id = sub
+        
         next();
     } catch (error) {
         res.status(401).json({ error: 'Token invalid' })

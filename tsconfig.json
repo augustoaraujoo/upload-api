@@ -12,6 +12,10 @@
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
+    "typeRoots": [
+      "./src/@types",
+      "./node_modules/@types"
+    ],
   },
   "ts-node": {
     "esm": true
