@@ -4,12 +4,18 @@
     "outDir": "dist",
     "strict": true,
     "lib": ["esnext"],
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "esModuleInterop": true,
-    "module": "Commonjs",
-    "moduleResolution": "node"
+    "module": "CommonJS",
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
   },
   "ts-node": {
     "esm": true
   },
+  "include": ["src/**/*"],
   "exclude": ["node_modules"]
 }

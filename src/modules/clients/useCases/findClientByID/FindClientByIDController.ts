@@ -1,5 +1,5 @@
 import { Response, Request } from 'express';
-import { findClientByIDUseCase } from '.';
+import { findClientByIDUseCase } from './index';
 
 class FindClientByIDController {
     async handle(req: Request, res: Response) {

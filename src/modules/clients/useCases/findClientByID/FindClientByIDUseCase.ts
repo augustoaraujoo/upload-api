@@ -1,4 +1,4 @@
-import { PrismaRepositoryClient } from '../../repositories/prismaRepository/PrismaRepositoryClient';
+import { PrismaRepositoryClient } from '../../../../modules/clients/repositories/prismaRepository/PrismaRepositoryClient';
 interface IRequest {
     id: string;
 }

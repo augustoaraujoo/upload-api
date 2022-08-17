@@ -8,4 +8,4 @@ const createClientController = new CreateClientController();
 const findClientByIDController = new FindClientByIDController();
 clientsRoutes.post('/create', createClientController.handle);
 clientsRoutes.get('/find/:id', findClientByIDController.handle);
-export { clientsRoutes };
+export default clientsRoutes ;
