@@ -9,6 +9,9 @@ var path_1 = __importDefault(require("path"));
 // Multer config
 module.exports = (0, multer_1["default"])({
     storage: multer_1["default"].diskStorage({
+        destination: function (req, file, cb) {
+            cb(null, 'uploads');
+        },
         // função que ira criar uma hash antes do nome do arquivo
         // para evitar que 2 arquivos tenham o mesmo nome
         // filename

@@ -35,43 +35,13 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 exports.__esModule = true;
+// FILE DEPRECATED
 var router = require("express").Router();
-var upload = require("../utils/multer");
 var client_1 = require("@prisma/client");
-var cloudinary_1 = __importDefault(require("../utils/cloudinary"));
 var prisma = new client_1.PrismaClient();
-router.post("/register", function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var username, user, error_1;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                username = req.body.username;
-                _a.label = 1;
-            case 1:
-                _a.trys.push([1, 3, , 4]);
-                return [4 /*yield*/, prisma.user.create({
-                        data: {
-                            username: username
-                        }
-                    })];
-            case 2:
-                user = _a.sent();
-                res.json(user).status(200);
-                return [3 /*break*/, 4];
-            case 3:
-                error_1 = _a.sent();
-                console.log(error_1);
-                return [3 /*break*/, 4];
-            case 4: return [2 /*return*/];
-        }
-    });
-}); });
 router.get('/allUsers', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var users, error_2;
+    var users, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -86,15 +56,15 @@ router.get('/allUsers', function (req, res) { return __awaiter(void 0, void 0, v
                 res.json(users).status(200);
                 return [3 /*break*/, 3];
             case 2:
-                error_2 = _a.sent();
-                console.log(error_2);
+                error_1 = _a.sent();
+                console.log(error_1);
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }
     });
 }); });
 router.get('/userByID/:id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var id, user, error_3;
+    var id, user, error_2;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -115,41 +85,8 @@ router.get('/userByID/:id', function (req, res) { return __awaiter(void 0, void 
                 res.json(user).status(200);
                 return [3 /*break*/, 4];
             case 3:
-                error_3 = _a.sent();
-                console.log(error_3);
-                return [3 /*break*/, 4];
-            case 4: return [2 /*return*/];
-        }
-    });
-}); });
-router.post("/upload/:id", upload.single("image"), function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, path, filename, create, result, err_1;
-    return __generator(this, function (_b) {
-        switch (_b.label) {
-            case 0:
-                _b.trys.push([0, 3, , 4]);
-                _a = req.file, path = _a.path, filename = _a.filename;
-                return [4 /*yield*/, prisma.photo.create({
-                        data: {
-                            url: filename,
-                            User: {
-                                connect: {
-                                    id: req.params.id
-                                }
-                            }
-                        }
-                    })];
-            case 1:
-                create = _b.sent();
-                console.log(create);
-                return [4 /*yield*/, cloudinary_1["default"].uploader.upload(path)];
-            case 2:
-                result = _b.sent();
-                res.json(result).status(200);
-                return [3 /*break*/, 4];
-            case 3:
-                err_1 = _b.sent();
-                console.log(err_1);
+                error_2 = _a.sent();
+                console.log(error_2);
                 return [3 /*break*/, 4];
             case 4: return [2 /*return*/];
         }

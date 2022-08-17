@@ -1,6 +1,5 @@
 import { Response, Request } from 'express';
-import { UploadFileClientUseCase } from './uploadFileClientUseCase';
-import { PrismaRepositoryClient } from '../../repositories/prismaRepository/PrismaRepositoryClient';
+import { uploadFileClientUseCase } from '.';
 interface File {
     path: string
     filename?: string
@@ -12,8 +11,6 @@ class UploadFileClientController {
         // remover dps username no body
         const { id } = req.params
 
-        const prismaRepositoryClient = new PrismaRepositoryClient();
-        const uploadFileClientUseCase = new UploadFileClientUseCase(prismaRepositoryClient);
         const createUpload = await uploadFileClientUseCase.execute({
             id,
             path,
