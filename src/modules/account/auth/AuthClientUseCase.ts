@@ -1,5 +1,5 @@
-import { prismaDBClient } from "../../../db/prismaDBClient";
 import { sign } from "jsonwebtoken";
+import { PrismaRepositoryClient } from "../../clients/repositories/prismaRepository/PrismaRepositoryClient";
 
 interface IRequest {
     username: string
@@ -8,11 +8,8 @@ interface IRequest {
 class AuthClientUseCase {
 
     async execute({ username }: IRequest): Promise<any> {
-        const client = await prismaDBClient.user.findFirst({
-            where: {
-                username
-            }
-        });
+        const prisma = new PrismaRepositoryClient();
+        const client = await prisma.findClient({username});
         if (!client) {
             throw new Error('Client not found');
         }
